@@ -1,0 +1,23 @@
+{
+    "offices": [
+      {
+        "address": "TECOM Zone, Dubai Internet City\nDubai, United Arab Emirates",
+        "id": "dubai",
+        "image": "https://lh3.googleusercontent.com/xw0iylnw3b3-qxwoNzLSLJlAAPtkF1KONnIoBTDHtURr04fzH9DeO08GYvEsKYQtE9GCdOMTk_s08H6-btSquKo3moeILfc3Kpu4MA",
+        "lat": 25.0929,
+        "lng": 55.1591,
+        "name": "Dubai",
+        "phone": "+971 4 4509500",
+        "region": "africa-middle-east"
+      }
+    ],
+    "regions": [
+      {
+        "coords": { "lat": 2.9660291, "lng": 1.3271339 },
+        "id": "africa-middle-east",
+        "name": "Africa & Middle East",
+        "zoom": 3.0
+      }
+    ]
+  }
+  
