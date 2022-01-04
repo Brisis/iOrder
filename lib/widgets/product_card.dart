@@ -1,15 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iorder/constants/constants.dart' as constants;
-import 'package:iorder/ui_main/ui_pages/product.dart';
 
 // import 'package:hr24/icons/my_flutter_app_icons.dart';
 
-class PostCard extends StatelessWidget {
+class ProductCard extends StatelessWidget {
   String image;
   int avgrating;
 
-  PostCard({Key? key, required this.image, required this.avgrating}) : super(key: key);
+  ProductCard({Key? key, required this.image, required this.avgrating}) : super(key: key);
 
   List<Widget> _getRatings(avgrating) {
     List<Widget> ratings = [];
@@ -97,34 +96,51 @@ class PostCard extends StatelessWidget {
           const SizedBox(
             height: 15,
           ),
-          InkWell(
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const ProductScreen()));
-            },
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          RichText(
+            maxLines: 5,
+            overflow: TextOverflow.ellipsis,
+            text: TextSpan(
               children: [
-                Expanded(child: Text("Cooked Chineese Rice with onion and tomatoes:", maxLines: 1, style: theme.textTheme.bodyText2!.copyWith(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis))),
-                SizedBox(
-                  width: 10.0,
+                TextSpan(
+                  text: 'Description: ',
+                  style: theme.textTheme.bodyText1!.copyWith(fontWeight: FontWeight.bold),
                 ),
-                Text("USD \$1.50", style: theme.textTheme.bodyText2!.copyWith(fontWeight: FontWeight.bold)),
+                TextSpan(
+                  text: 'Cooked Chineese Rice with onion and tomatoes',
+                  style: theme.textTheme.bodyText1,
+                ),
               ],
+              //TextStyle(fontSize: 18, fontFamily: 'Raleway', fontWeight: FontWeight.bold, color: Colors.black),
+            ),
+          ),
+          SizedBox(
+            height: 10.0,
+          ),
+          RichText(
+            maxLines: 5,
+            overflow: TextOverflow.ellipsis,
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: 'Price: ',
+                  style: theme.textTheme.bodyText1!.copyWith(fontWeight: FontWeight.bold),
+                ),
+                TextSpan(
+                  text: 'USD \$1.50',
+                  style: theme.textTheme.bodyText1,
+                ),
+              ],
+              //TextStyle(fontSize: 18, fontFamily: 'Raleway', fontWeight: FontWeight.bold, color: Colors.black),
             ),
           ),
           const SizedBox(
             height: 10.0,
           ),
-          InkWell(
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const ProductScreen()));
-            },
-            child: SizedBox(
-              //height: 350,
-              width: MediaQuery.of(context).size.width,
-              child: Image(image: AssetImage(image)),
-              // decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(5), image: DecorationImage(image: AssetImage('assets/images/tesla.jpeg'), fit: BoxFit.contain)),
-            ),
+          SizedBox(
+            //height: 350,
+            width: MediaQuery.of(context).size.width,
+            child: Image(image: AssetImage(image)),
+            // decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(5), image: DecorationImage(image: AssetImage('assets/images/tesla.jpeg'), fit: BoxFit.contain)),
           ),
           const SizedBox(
             height: 10,

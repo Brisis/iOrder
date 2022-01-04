@@ -136,7 +136,7 @@ class RestaurantCard extends StatelessWidget {
         children: [
           InkWell(
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const RestaurantScreen()));
+              // Navigator.push(context, MaterialPageRoute(builder: (context) => const RestaurantScreen()));
             },
             child: Container(
               height: 100,

@@ -6,6 +6,7 @@ import 'package:iorder/constants/constants.dart' as constants;
 import 'package:iorder/ui_main/explore/places.dart';
 import 'package:iorder/ui_main/restaurant/reviews.dart';
 import 'package:iorder/ui_main/restaurant/map.dart';
+import 'package:iorder/ui_main/ui_pages/product.dart';
 
 class RestaurantScreen extends StatefulWidget {
   const RestaurantScreen({Key? key}) : super(key: key);
@@ -324,13 +325,18 @@ class PostCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10.0),
-                    topRight: Radius.circular(10.0),
-                  ),
-                  image: DecorationImage(image: AssetImage(imagePath), fit: BoxFit.cover)),
+            child: InkWell(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const ProductScreen()));
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(10.0),
+                      topRight: Radius.circular(10.0),
+                    ),
+                    image: DecorationImage(image: AssetImage(imagePath), fit: BoxFit.cover)),
+              ),
             ),
           ),
           const SizedBox(
@@ -338,10 +344,15 @@ class PostCard extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(5.0),
-            child: Text(
-              name,
-              style: theme.textTheme.bodyText2!.copyWith(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
-              maxLines: 1,
+            child: InkWell(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const ProductScreen()));
+              },
+              child: Text(
+                name,
+                style: theme.textTheme.bodyText2!.copyWith(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
+                maxLines: 1,
+              ),
             ),
           ),
           Padding(

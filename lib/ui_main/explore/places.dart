@@ -29,7 +29,7 @@ class _PlacesScreenState extends State<PlacesScreen> {
             pinned: true,
             leading: InkWell(
                 onTap: () {
-                  Navigator.pop(context);
+                  // Navigator.pop(context);
                 },
                 child: const Icon(
                   Icons.arrow_back_ios,

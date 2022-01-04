@@ -1,25 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iorder/constants/constants.dart' as constants;
-import 'package:iorder/ui_main/ui_pages/product.dart';
 
-// import 'package:hr24/icons/my_flutter_app_icons.dart';
+class ReviewCard extends StatelessWidget {
+  final String name;
+  final String imagePath;
+  final int orders;
+  final int rating;
+  final String description;
 
-class PostCard extends StatelessWidget {
-  String image;
-  int avgrating;
+  ReviewCard({Key? key, required this.name, required this.imagePath, required this.orders, required this.rating, required this.description}) : super(key: key);
 
-  PostCard({Key? key, required this.image, required this.avgrating}) : super(key: key);
-
-  List<Widget> _getRatings(avgrating) {
+  List<Widget> _getRatings(rating) {
     List<Widget> ratings = [];
 
-    for (var i = 0; i < avgrating; i++) {
+    for (var i = 0; i < rating; i++) {
       ratings.add(const Padding(
         padding: EdgeInsets.only(right: 5.0),
         child: Icon(
           CupertinoIcons.star,
-          size: 20,
+          size: 25,
           color: constants.mainColor,
         ),
       ));
@@ -45,8 +45,8 @@ class PostCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const CircleAvatar(
-                backgroundImage: AssetImage('assets/girl.jpeg'),
+              CircleAvatar(
+                backgroundImage: AssetImage(imagePath),
               ),
               Expanded(
                 child: Padding(
@@ -56,14 +56,14 @@ class PostCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        "Jessica's Diner",
+                        name,
                         style: theme.textTheme.headline6!.copyWith(fontSize: 16, color: Colors.black, fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(
                         height: 3,
                       ),
                       Text(
-                        "Fast food restaurant",
+                        "$orders purchases",
                         style: theme.textTheme.bodyText2!.copyWith(overflow: TextOverflow.ellipsis, color: Colors.black54),
                         maxLines: 1,
                       ),
@@ -88,7 +88,7 @@ class PostCard extends StatelessWidget {
                   ),
                   child: Center(
                     child: Text(
-                      "Add to Cart",
+                      "Report",
                       style: theme.textTheme.caption!.copyWith(fontWeight: FontWeight.bold, color: constants.linkColor),
                     ),
                   ))
@@ -97,44 +97,18 @@ class PostCard extends StatelessWidget {
           const SizedBox(
             height: 15,
           ),
-          InkWell(
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const ProductScreen()));
-            },
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(child: Text("Cooked Chineese Rice with onion and tomatoes:", maxLines: 1, style: theme.textTheme.bodyText2!.copyWith(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis))),
-                SizedBox(
-                  width: 10.0,
-                ),
-                Text("USD \$1.50", style: theme.textTheme.bodyText2!.copyWith(fontWeight: FontWeight.bold)),
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: 10.0,
-          ),
-          InkWell(
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const ProductScreen()));
-            },
-            child: SizedBox(
-              //height: 350,
-              width: MediaQuery.of(context).size.width,
-              child: Image(image: AssetImage(image)),
-              // decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(5), image: DecorationImage(image: AssetImage('assets/images/tesla.jpeg'), fit: BoxFit.contain)),
-            ),
-          ),
+          Text(description, maxLines: 5, style: theme.textTheme.bodyText2!.copyWith(overflow: TextOverflow.ellipsis)),
           const SizedBox(
             height: 10,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+                children: [..._getRatings(rating)],
+              ),
+              Row(
                 children: [
                   Icon(
                     CupertinoIcons.hand_thumbsup,
@@ -149,9 +123,6 @@ class PostCard extends StatelessWidget {
                   ),
                 ],
               ),
-              Row(
-                children: [..._getRatings(avgrating)],
-              )
             ],
           ),
         ],

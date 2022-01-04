@@ -13,7 +13,12 @@ class _HomePageState extends State<HomePage> {
   _buildList(int count) {
     List<Widget> listItems = [];
     for (int i = 0; i < count; i++) {
-      listItems.add(Padding(padding: const EdgeInsets.only(bottom: 8.0), child: PostCard(image: "assets/food2.jpeg")));
+      listItems.add(Padding(
+          padding: const EdgeInsets.only(bottom: 8.0),
+          child: PostCard(
+            image: "assets/food2.jpeg",
+            avgrating: 4,
+          )));
     }
     return listItems;
   }
